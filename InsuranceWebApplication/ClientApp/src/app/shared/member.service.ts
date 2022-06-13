@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Member } from './member.model';
 import { HttpClient } from "@angular/common/http";
+import { Occupation } from './occupation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class MemberService {
   readonly _baseUrl = "https://localhost:44312/api/member";
   formData: Member = new Member();
   list: Member[];
+  occupationList: Occupation[];
 
   postMember() {
     return this.http.post(this._baseUrl, this.formData);
@@ -40,5 +42,11 @@ export class MemberService {
     this.http.get(this._baseUrl + '/list')
       .toPromise()
       .then(res => this.list = res as Member[]);
+  }
+
+  getOccupationList() {
+    this.http.get(this._baseUrl + '/occupationlist')
+      .toPromise()
+      .then(res => this.occupationList = res as Occupation[]);
   }
 }

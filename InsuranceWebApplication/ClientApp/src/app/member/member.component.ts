@@ -14,6 +14,7 @@ export class MemberComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.refreshList();
+    this.service.getOccupationList();
   }
 
   populateForm(selectedRecord: Member) {

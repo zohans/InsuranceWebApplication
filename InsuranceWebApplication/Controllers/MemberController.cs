@@ -112,5 +112,21 @@ namespace InsuranceWebApplication.Controllers
             decimal premiumAmount = ((memberRequest.DeathInsuredSum * data.OccupationRating.Factor * memberRequest.Age) / 1000) * 12;
             return premiumAmount;
         }
+
+
+        [HttpGet]
+        [Route("occupationlist")]
+        public async Task<IEnumerable<OccupationResponse>> GetOccupation()
+        {
+            var data = await _insuranceDBContext.Occupations
+                .ToListAsync();
+
+            var result = new List<OccupationResponse>();
+            foreach (var d in data)
+            {
+                result.Add(new OccupationResponse { Id = d.Id, Name = d.Name });
+            }
+            return result;
+        }
     }
 }

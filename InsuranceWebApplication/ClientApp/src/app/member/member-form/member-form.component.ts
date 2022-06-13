@@ -3,6 +3,7 @@ import { MemberService } from '../../shared/member.service';
 import { NgForm } from '@angular/forms';
 import { Member } from '../../shared/member.model';
 
+
 @Component({
   selector: 'app-member-form',
   templateUrl: './member-form.component.html',
@@ -10,19 +11,12 @@ import { Member } from '../../shared/member.model';
   ]
 })
 export class MemberFormComponent implements OnInit {
-  occupations: [
-    { Id:1, Name: "Cleaner" },
-    { Id:2, Name: "Doctor" },
-    { Id: 3, Name: "Author" },
-    { Id: 4, Name: "Farmer" },
-    { Id: 5, Name: "Mechanic" },
-    { Id: 6, Name: "Florist" }
-  ]
+
   constructor(public service: MemberService) {
     service.formData.occupationId = "1";
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
   }
 
   onSubmit(form: NgForm) {
