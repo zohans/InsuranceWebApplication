@@ -61,6 +61,23 @@ namespace InsuranceWebApplication.Controllers
             return addRecord;
         }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Member>> DeleteMember(int id)
+        {
+            var deleteRecord = await _insuranceDBContext.Members.Where(m => m.Id == id).FirstOrDefaultAsync();
+
+            if (deleteRecord == null)
+            {
+                return NotFound();
+            }
+
+            _insuranceDBContext.Remove(deleteRecord);
+            await _insuranceDBContext.SaveChangesAsync();
+
+            return deleteRecord;
+        }
+
+
         [HttpPost]
         [Route("deathpremiumcalculate")]
         public async Task<decimal> calculateDeathPremium([FromBody]MemberRequest memberRequest)
