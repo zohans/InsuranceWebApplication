@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -35,6 +36,29 @@ namespace InsuranceWebApplication.Controllers
         {
             var data = await _insuranceDBContext.Members.ToListAsync();
             return data;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Member>> InsertMember([FromBody] MemberRequest model)
+        {
+            if (model.Id > 0)
+                return BadRequest();
+
+            var dateOfBirth = DateTime.ParseExact(model.DateOfBirth, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            var addRecord = new Member
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Age = model.Age,
+                DateOfBirth = dateOfBirth,
+                DeathInsuredSum = model.DeathInsuredSum,
+                OccupationId = model.OccupationId,
+            };
+
+             _insuranceDBContext.Members.Add(addRecord);
+            await _insuranceDBContext.SaveChangesAsync();
+            
+            return addRecord;
         }
 
         [HttpPost]

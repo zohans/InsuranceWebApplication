@@ -31,7 +31,7 @@ export class MemberService {
       Occupation: this.formData.occupation,
       OccupationId: this.formData.occupationId,
       Age: this.formData.age,
-      DeathInsuredSum: this.formData.deathinsuredsum
+      DeathInsuredSum: this.formData.deathInsuredSum
     };
     return this.http.post(this._baseUrl + '/deathpremiumcalculate', params);
   }

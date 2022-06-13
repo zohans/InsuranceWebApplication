@@ -14,7 +14,7 @@ namespace InsuranceWebApplication.ViewModels
 
         public int Age { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
         public decimal DeathInsuredSum { get; set; }
         public string  Occupation { get; set; }

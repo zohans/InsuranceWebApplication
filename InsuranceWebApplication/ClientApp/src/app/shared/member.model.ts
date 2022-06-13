@@ -3,10 +3,10 @@ export class Member {
   firstName: string;
   lastName: string;
   age: string;
-  dateofbirth: string;
+  dateOfBirth: string;
   occupation: string;
   occupationId: string;
-  deathinsuredsum: string;
+  deathInsuredSum: string;
   premium: string;
 
   constructor() {
@@ -14,10 +14,10 @@ export class Member {
     this.firstName = "";
     this.lastName = "";
     this.age = "";
-    this.dateofbirth = "";
+    this.dateOfBirth = "";
     this.occupation = "";
     this.occupationId = ""
-    this.deathinsuredsum = "";
+    this.deathInsuredSum = "";
     this.premium = "";
   }
 }
