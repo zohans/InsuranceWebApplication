@@ -1,0 +1,54 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+  <input type="hidden" name="id"
+         value="service.formData.id" />
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <label>First Name</label>
+      <input class="form-control form-control-lg" placeholder="First Name"
+             name="firstName" #firstname="ngModel" [(ngModel)]="service.formData.firstName" required />
+      <div class="invalid-feedback">
+        Please provide a First Name.
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Last Name</label>
+      <input class="form-control form-control-lg" placeholder="Last Name"
+             name="lastName" #firstname="ngModel" [(ngModel)]="service.formData.lastName" required />
+    </div>
+    <div class="form-group col-md-6">
+      <label>Age</label>
+      <input class="form-control form-control-lg" placeholder="Age"
+             name="age" #firstname="ngModel" [(ngModel)]="service.formData.age" required />
+    </div>
+    <div class="form-group col-md-6">
+      <label>Date of Birth</label>
+      <input class="form-control form-control-lg" placeholder="Date of Birth"
+             name="dateofbirth" #firstname="ngModel" [(ngModel)]="service.formData.dateofbirth" required />
+    </div>
+    <div class="form-group col-md-6">
+      <label>Occupation</label>
+      <input class="form-control form-control-lg" placeholder="Occupation"
+             name="occupation" #firstname="ngModel" [(ngModel)]="service.formData.occupation" required />
+    </div>
+    <div class="form-group col-md-6">
+      <label>Death Insured Sum</label>
+      <input class="form-control form-control-lg" placeholder="Death Insured Sum"
+             name="deathinsuredsum" #firstname="ngModel" [(ngModel)]="service.formData.deathinsuredsum" required />
+    </div>
+    <div class="form-group col-md-6">
+      <label>Premium</label>
+      <input class="form-control form-control-lg" placeholder="Premium"
+             name="premium" #firstname="ngModel" [(ngModel)]="service.formData.premium" required />
+    </div>
+    <div class="form-group">
+      <label>``</label>
+      <button class="btn btn-primary btn-lg btn-block" type="button" (click)="calculatePremium()">Calculate Premium</button>
+    </div>
+    <div class="form-group">
+      <label>``</label>
+      <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="form.invalid">Submit</button>
+    </div>
+
+  </div>
+  
+</form>

@@ -1,0 +1,79 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+  <input type="hidden" name="id"
+         value="service.formData.id" />
+
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label>First Name</label>
+      <input class="form-control form-control-lg" placeholder="First Name"
+             name="firstName" #firstname="ngModel" [(ngModel)]="service.formData.firstName" required />
+    </div>
+    <div class="form-group col-md-3">
+      <label>Last Name</label>
+      <input class="form-control form-control-lg" placeholder="Last Name"
+             name="lastName" #lastname="ngModel" [(ngModel)]="service.formData.lastName" required />
+    </div>
+    <div class="form-group col-md-3">
+      <label>Age</label>
+      <input class="form-control form-control-lg" placeholder="Age"
+             name="age" #age="ngModel" [(ngModel)]="service.formData.age" required />
+    </div>
+
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label>Date of Birth</label>
+      <input class="form-control form-control-lg" placeholder="Date of Birth"
+             name="dateofbirth" #dateofbirth="ngModel" [(ngModel)]="service.formData.dateofbirth" required />
+    </div>
+    <div class="form-group col-md-3">
+      <label>Occupation</label>
+      <!--<select class="custom-select"  #occupation="ngModel" [(ngModel)]="service.formData.occupation" required>
+    <option [value]="i.name" *ngFor="let i of occupations">{{i.name}}</option>
+    <option value="Cleaner">Cleaner</option>
+    <option value="Doctor">Doctor</option>
+    <option value="Author">Author</option>
+    <option value="Farmer">Farmer</option>
+    <option value="Mechanic">Mechanic</option>
+    <option value="Florist">Florist</option>
+  </select>-->
+      <!--<select [(ngModel)]="service.formData.occupation">
+        <option [value]="i" *ngFor="let i of occupations">{{i}}</option>
+      </select>-->
+      <select [(ngModel)]="service.formData.occupationId" name="occupation" class="form-control">
+      <option value="1">Cleaner</option>
+      <option value="2">Doctor</option>
+      <option value="3">Author</option>
+      <option value="4">Farmer</option>
+      <option value="5">Mechanic</option>
+      <option value="6">Florist</option>
+      </select>
+
+      <!--<input class="form-control form-control-lg" placeholder="Occupation"
+         name="occupation" #occupation="ngModel" [(ngModel)]="service.formData.occupation" required />-->
+    </div>
+
+    <div class="form-group col-md-3">
+      <label>Death Insured Sum</label>
+      <input class="form-control form-control-lg" placeholder="Death Insured Sum"
+             name="deathinsuredsum" #deathinsuredsum="ngModel" [(ngModel)]="service.formData.deathinsuredsum" required />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label>Premium</label>
+      <input class="form-control form-control-lg" placeholder="Premium"
+             name="premium" #premium="ngModel" [(ngModel)]="service.formData.premium" required />
+    </div>
+  </div>
+
+  <div class="form-row right">
+    <div class="col-md-2 bg-light text-right">
+      <button class="btn btn-primary btn-lg btn-block" type="button" (click)="calculatePremium()">Calculate Premium</button>
+    </div>
+    <div class="col-md-1 bg-light text-right">
+      <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="form.invalid">Save</button>
+    </div>
+  </div>
+
+</form>
