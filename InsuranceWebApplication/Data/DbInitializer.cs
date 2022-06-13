@@ -52,7 +52,8 @@ namespace InsuranceWebApplication.Data
 
             var members = new Member[]
             {
-            new Member{FirstName="Carson",LastName="Alexander", Age=30, DateOfBirth=new DateTime(2000,10,01), CreatedDate=DateTime.Now, OccupationId=1},
+                new Member{FirstName="Carson",LastName="Alexander", Age=30, DeathInsuredSum= 7000, Premium= 4410, DateOfBirth=new DateTime(2000,10,01), CreatedDate=DateTime.Now, OccupationId=1},
+                new Member{FirstName="John",LastName="Smith", Age=30, DeathInsuredSum= 7000, Premium= 5040, DateOfBirth=new DateTime(2000,10,01), CreatedDate=DateTime.Now, OccupationId=1},
             };
             foreach (Member s in members)
             {

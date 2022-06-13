@@ -26,16 +26,36 @@ namespace InsuranceWebApplication.Controllers
         [Route("{memberId}")]
         public async Task<IEnumerable<Member>> GetMember(int memberId)
         {
-            var data = await _insuranceDBContext.Members.Where(b => b.Id == memberId).ToListAsync();
+            var data = await _insuranceDBContext.Members                
+                .Where(b => b.Id == memberId).ToListAsync();
+            
             return data;
         }
 
         [HttpGet]
         [Route("list")]
-        public async Task<IEnumerable<Member>> GetMembers()
+        public async Task<IEnumerable<MemberResponse>> GetMembers()
         {
-            var data = await _insuranceDBContext.Members.ToListAsync();
-            return data;
+            var data = await _insuranceDBContext.Members
+                .Include(o => o.Occupation)
+                .ToListAsync();
+
+            IList<MemberResponse> result = new List<MemberResponse>();
+            foreach (var d in data)
+            {
+                result.Add(new MemberResponse
+                {
+                    Id = d.Id,
+                    FirstName = d.FirstName,
+                    LastName = d.LastName,
+                    Age = d.Age,
+                    DateOfBirth = d.DateOfBirth,
+                    DeathInsuredSum = d.DeathInsuredSum,
+                    Occupation = d.Occupation.Name,
+                    Premium = d.Premium
+                });                
+            }
+            return result;
         }
 
         [HttpPost]
@@ -53,6 +73,7 @@ namespace InsuranceWebApplication.Controllers
                 DateOfBirth = dateOfBirth,
                 DeathInsuredSum = model.DeathInsuredSum,
                 OccupationId = model.OccupationId,
+                Premium = model.Premium
             };
 
              _insuranceDBContext.Members.Add(addRecord);

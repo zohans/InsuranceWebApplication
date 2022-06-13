@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace InsuranceWebApplication.ViewModels
 {
-    public class MemberRequest
+    public class MemberResponse
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -14,11 +14,10 @@ namespace InsuranceWebApplication.ViewModels
 
         public int Age { get; set; }
 
-        public string DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         public decimal DeathInsuredSum { get; set; }
-        public decimal Premium { get; set; }
         public string  Occupation { get; set; }
-        public int OccupationId { get; set; }
+        public decimal Premium { get; set; }
     }
 }

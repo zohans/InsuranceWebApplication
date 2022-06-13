@@ -25,6 +25,9 @@ namespace InsuranceWebApplication.Data
         [Column(TypeName = "decimal(10,2)")]
         public decimal DeathInsuredSum { get; set; }
 
+        [Column(TypeName = "decimal(10,2)")]
+        public decimal Premium { get; set; }
+
         public DateTime CreatedDate { get; set; }
 
         public DateTime ModifiedDate { get; set; }
